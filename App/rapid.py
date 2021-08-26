@@ -57,9 +57,9 @@ def getrapid():
             chromedriver =  pathData
 
     chromeOptions = webdriver.ChromeOptions()
-    chromeOptions.add_argument("--no-sandbox")
-    chromeOptions.add_argument("--disable-setuid-sandbox")
-    chromeOptions.add_argument("--remote-debugging-port=9222")
+    chromeOptions.add_argument('--headless')
+    chromeOptions.add_argument('--no-sandbox')
+    chromeOptions.add_argument('--disable-dev-shm-usage')
     driver = webdriver.Chrome(executable_path=chromedriver, chrome_options=chromeOptions)
 
     # Target Form
@@ -68,7 +68,7 @@ def getrapid():
 
     
     # Get Link
-    if not driver.get(userlink):
+    if driver.get(userlink):
         for i in tqdm(range(5)):
             sleep(0.2)
     
