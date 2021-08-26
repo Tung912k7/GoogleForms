@@ -9,6 +9,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import welcome
 import rapid
+import answer
 
 
 class Main:
@@ -24,21 +25,22 @@ class Main:
     if result == "[1] Rapid Input":
         selected = 1
         print("Starting Rapid Input Attack ...")
+
     elif result == "[2] Secret Finder":
         selected = 2
-        print("This Tool is In Demo Build \n You Can Only Use Rapid Input Attack")
+        print("Starting Secret Finder Attack ...")
+
     elif result == "[3] Exit":
         selected = 3
         print("Exiting Program ...")
     
     # Rapid Input
     if selected == 1:
-        print("Started the Rapid Operation ... \n")
         rapidattack = rapid.getrapid()
 
     # Secret Finder
     elif selected == 2:
-        print("Started the Answer Attack ... \n")
+        secretfinder = answer.getanswer()
 
     # Exit GoogleForms Hack
     elif selected == 3:
