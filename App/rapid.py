@@ -64,7 +64,7 @@ def getrapid():
 
     # Target Form
     userlink = input(fg(79, 176, 140) + "[~] Enter Your Google Form Url: ")
-    verifiedlink = userlink.startswith("https://docs.google.com/forms/")
+    verifiedlink = userlink.startswith("https://docs.google.com/forms/") or userlink.startswith("https://forms.gle")
 
     
     # Get Link
