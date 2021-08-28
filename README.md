@@ -37,7 +37,10 @@ Just install the **requirements.txt** and run the **main.py** file.
 4- Enter the **amount** you're looking for <br>
 
 # Secret Finder
-Building ...
+1- Enter your **chrome driver** path. <br>
+2- Add your target *google form* **link** <br>
+
+[!]**Note**: *This Attack Only Works If ViewScore Option is Available. This Attack is Usefull for One Time Response Exams For Extracting Answers.*
 
 # Expansion :heart:
 **Developed With ♥️ By Ashkan Ebtekari**
