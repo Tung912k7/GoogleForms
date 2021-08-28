@@ -80,8 +80,8 @@ def getanswer():
 
     questioncount = 0
     answercount = 0
-    allquestions = ["Please Select From Available Answers"]
-    allanswers = ["Please Select From Available Answers"]
+    allquestions = ["sample"]
+    allanswers = ["sample"]
 
     for questions in soup.find_all("div", class_="freebirdFormviewerComponentsQuestionBaseTitle"):
         questioncount = questioncount + 1
@@ -95,4 +95,34 @@ def getanswer():
     
     print("Found {0} Questions !".format(convertquestioncount))
     print("Found {0} Answers !".format(convertanswercount))
-    
+
+
+    # Search Answers
+
+    if questioncount or answercount > 0 :
+        print("Looking For Answers ...")
+
+        checkboxpath = None
+        answernum = len(allanswers)
+        if soup.find_all("span", class_="freebirdFormviewerComponentsQuestionCheckboxLabel"):
+            choices = driver.find_elements_by_class_name("freebirdFormviewerComponentsQuestionCheckboxLabel")
+            for i in range(0, len(choices)):
+                if choices[i].is_displayed():
+                    choices[i].click()
+                    print("Clicked !")
+
+
+        radiolabelspath = None
+        if soup.find_all("span", class_="freebirdFormviewerComponentsQuestionRadioLabel"):
+            choices = driver.find_elements_by_class_name("freebirdFormviewerComponentsQuestionRadioLabel")
+            for i in range(0, len(choices)):
+                if choices[i].is_displayed():
+                    choices[i].click()
+                    print("Clicked !")
+
+        submitpath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div/div/div/span'
+ 
+
+    else:
+        print(fg(255, 76, 36) + "No Questions or Answers Found !")
+
