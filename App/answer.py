@@ -109,7 +109,6 @@ def getanswer():
             for i in range(0, len(choices)):
                 if choices[i].is_displayed():
                     choices[i].click()
-                    print("Clicked !")
 
 
         radiolabelspath = None
@@ -118,10 +117,38 @@ def getanswer():
             for i in range(0, len(choices)):
                 if choices[i].is_displayed():
                     choices[i].click()
-                    print("Clicked !")
 
+        # Submit Automation
         submitpath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div/div/div/span'
- 
+        submit = driver.find_element_by_xpath(submitpath)
+        webdriver.ActionChains(driver).move_to_element(submit).click(submit).perform()
+        print("Submited Form !!!")
+
+        # Click ViewScore
+        sleep(3.5)
+        viewscorepath = "/html/body/div[1]/div[2]/div[1]/div/div[4]/div/a/span/span"
+        viewscore = driver.find_element_by_xpath(viewscorepath)
+        webdriver.ActionChains(driver).move_to_element(viewscore).click(viewscore).perform()
+        print("Clicked ViewScore !!!")
+
+        # Find Answers
+        sleep(1)
+        driver.get("https://docs.google.com/forms/d/e/1FAIpQLSdiwAWqBjTPQfAYiiK98Ttex6QRjJ7lAhA7CGU4wTlItmBShw/viewscore?viewscore=AE0zAgAtBzriNp-WZEzlULNAhMQnSOioffHO0OfkO7r3Yt10T4jFK6-rTXJ4rpgXebUKplQ")
+        sleep(3)
+
+
+        finddivs = driver.find_elements_by_class_name("freebirdFormviewerViewItemsCheckboxLabel")
+        findanswers = driver.find_elements_by_class_name("freebirdFormviewerViewItemsCheckboxLabel")
+
+        foundanswer = None
+        if findanswers:
+            for i in range(1, len(finddivs)):
+                foundanswer = '/html/body/div/div[2]/div[1]/div/div[2]/div[{0}]/div/div[4]/div[2]/div/label/div/div[2]/div/span'.format(str(i))
+                target = driver.find_element_by_xpath(foundanswer)
+                if target.is_displayed():
+                    print(target.text)
+                else:
+                    print("Already Correct !")
 
     else:
         print(fg(255, 76, 36) + "No Questions or Answers Found !")
